@@ -104,7 +104,7 @@ function Index() {
         <div className="flex items-end justify-between gap-8 border-b-4 border-foreground pb-7">
           <div>
             <p className="mb-4 text-xs font-bold uppercase">Volumen 01 / Portfolio</p>
-            <h1 className="font-display text-[clamp(4.8rem,13vw,12rem)] font-black uppercase leading-[.78]">Rammiro</h1>
+            <h1 className="font-display text-[clamp(4rem,13vw,12rem)] font-black uppercase leading-[.78]">Rammiro</h1>
           </div>
           <div className="hidden h-28 w-28 shrink-0 bg-foreground md:block" aria-hidden="true" />
         </div>
