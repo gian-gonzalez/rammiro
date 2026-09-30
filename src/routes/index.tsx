@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowDown, ArrowLeft, ArrowRight, Instagram, Menu, MessageCircle, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Instagram, Menu, MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import obra02 from "@/assets/art/obra-02.jpg.asset.json";
 import obra03 from "@/assets/art/obra-03.jpg.asset.json";
@@ -82,75 +82,85 @@ function Index() {
   };
 
   return (
-    <main className="overflow-hidden bg-background text-foreground">
-      <header className="fixed inset-x-0 top-0 z-40 flex h-20 items-center justify-between border-b border-foreground/15 bg-background/90 px-5 backdrop-blur-md md:px-10">
-        <button onClick={() => jump("inicio")} className="font-display text-3xl leading-none text-foreground" aria-label="Ir al inicio">RAMMIRO<span className="text-signal">*</span></button>
-        <nav className="hidden items-center gap-9 text-xs font-bold uppercase md:flex">
+    <main className="bg-background text-foreground">
+      <header className="sticky inset-x-0 top-0 z-40 flex h-16 items-center justify-between border-b-2 border-foreground bg-background px-4 md:h-20 md:px-10">
+        <button onClick={() => jump("inicio")} className="font-display text-2xl font-black uppercase leading-none text-foreground md:text-3xl" aria-label="Ir al inicio">Rammiro</button>
+        <nav className="hidden items-center gap-8 text-xs font-bold uppercase md:flex">
           <button onClick={() => jump("obras")} className="nav-link">Obras</button>
-          <button onClick={() => jump("manifiesto")} className="nav-link">Manifiesto</button>
+          <button onClick={() => jump("manifiesto")} className="nav-link">Perfil</button>
           <button onClick={() => jump("contacto")} className="nav-link">Contacto</button>
         </nav>
-        <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú">
+        <Button variant="ghost" size="icon" className="rounded-none md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú">
           {menuOpen ? <X /> : <Menu />}
         </Button>
-        {menuOpen && <nav className="absolute left-0 top-20 flex w-full flex-col border-b border-foreground bg-background px-6 py-7 text-2xl font-display md:hidden">
+        {menuOpen && <nav className="absolute left-0 top-16 flex w-full flex-col border-b-2 border-foreground bg-background px-5 py-5 font-display text-2xl font-bold uppercase md:hidden">
           <button className="py-3 text-left" onClick={() => jump("obras")}>OBRAS</button>
-          <button className="py-3 text-left" onClick={() => jump("manifiesto")}>MANIFIESTO</button>
+          <button className="py-3 text-left" onClick={() => jump("manifiesto")}>PERFIL</button>
           <button className="py-3 text-left" onClick={() => jump("contacto")}>CONTACTO</button>
         </nav>}
       </header>
 
-      <section id="inicio" className="relative flex min-h-[92svh] flex-col justify-end border-b border-foreground px-5 pb-10 pt-28 md:px-10 md:pb-14">
-        <div aria-hidden="true" className="scribble scribble-one">×</div>
-        <div aria-hidden="true" className="scribble scribble-two">//</div>
-        <p className="mb-5 max-w-sm text-sm uppercase leading-relaxed text-muted-foreground md:ml-[51%]">Pintura contemporánea<br />Mar del Plata, Argentina</p>
-        <h1 className="font-display text-[clamp(5rem,19vw,17rem)] leading-[.72]">RAMMIRO</h1>
-        <div className="mt-7 flex items-end justify-between gap-6">
-          <p className="max-w-xl text-xl leading-snug md:text-3xl">Crónicas visuales del mar, la noche y todo lo que sucede en el medio.</p>
-          <Button variant="outline" size="icon" className="h-12 w-12 shrink-0 rounded-full border-foreground bg-transparent" onClick={() => jump("obras")} aria-label="Ver obras"><ArrowDown /></Button>
+      <section id="inicio" className="mx-auto max-w-[1500px] px-4 pt-10 md:px-10 md:pt-16">
+        <div className="flex items-end justify-between gap-8 border-b-4 border-foreground pb-7">
+          <div>
+            <p className="mb-4 text-xs font-bold uppercase">Volumen 01 / Portfolio</p>
+            <h1 className="font-display text-[clamp(4rem,13vw,12rem)] font-black uppercase leading-[.78]">Rammiro</h1>
+          </div>
+          <div className="hidden h-28 w-28 shrink-0 bg-foreground md:block" aria-hidden="true" />
+        </div>
+        <div className="grid grid-cols-2 border-x-4 border-b-4 border-foreground md:grid-cols-4">
+          <p className="border-r-2 border-foreground p-4 text-xs font-bold uppercase md:p-5">Pintura contemporánea</p>
+          <p className="border-r-0 border-foreground p-4 text-xs font-bold uppercase md:border-r-2 md:p-5">Mar del Plata / ARG</p>
+          <p className="col-span-2 border-t-2 border-foreground p-4 text-xs uppercase md:border-t-0 md:p-5">Crónicas visuales del mar, la noche y todo lo que sucede en el medio.</p>
         </div>
       </section>
 
-      <section id="obras" className="px-5 py-24 md:px-10 md:py-32">
-        <div className="mb-14 flex items-end justify-between border-b border-foreground pb-4">
-          <h2 className="font-display text-5xl md:text-8xl">OBRAS</h2>
-          <span className="text-xs font-bold">01—17 / 2026</span>
+      <section id="obras" className="mx-auto max-w-[1500px] px-4 py-20 md:px-10 md:py-28">
+        <div className="mb-6 flex items-end justify-between border-b-2 border-foreground pb-3">
+          <h2 className="font-display text-4xl font-black uppercase md:text-6xl">Obras</h2>
+          <span className="text-xs font-bold uppercase">Archivo 01—17</span>
         </div>
-        <div className="art-grid">
+        <div className="grid grid-cols-2 border-l-2 border-t-2 border-foreground md:grid-cols-3 lg:grid-cols-4">
           {artworks.map((art, index) => (
-            <button key={art.src} onClick={() => setSelected(index)} className={`group artwork text-left ${art.wide ? "artwork-wide" : ""}`}>
-              <div className="relative overflow-hidden bg-muted">
-                <img src={art.src} alt={`Obra ${art.title} de RAMMIRO`} loading={index < 4 ? "eager" : "lazy"} className="w-full transition duration-700 group-hover:scale-[1.025]" />
-                <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-signal text-sm font-black text-signal-foreground opacity-0 transition group-hover:opacity-100">↗</span>
+            <button key={art.src} onClick={() => setSelected(index)} className="group min-w-0 border-b-2 border-r-2 border-foreground bg-background text-left">
+              <div className="relative aspect-square overflow-hidden bg-muted p-3 md:p-5">
+                <img src={art.src} alt={`Obra ${art.title} de RAMMIRO`} loading={index < 4 ? "eager" : "lazy"} className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.02]" />
+                <span className="absolute left-0 top-0 bg-foreground px-2 py-1 text-[10px] font-bold text-background">{String(index + 1).padStart(2, "0")}</span>
               </div>
-              <div className="mt-3 flex items-start justify-between gap-4 border-t border-foreground/60 pt-2">
-                <div><h3 className="text-sm font-black uppercase">{art.title}</h3>{art.size && <p className="mt-1 text-xs text-muted-foreground">{art.size}</p>}</div>
-                <span className="text-xs tabular-nums">{String(index + 1).padStart(2, "0")}</span>
+              <div className="min-h-24 border-t-2 border-foreground p-3 md:min-h-28 md:p-4">
+                <h3 className="break-words font-display text-sm font-bold uppercase leading-tight md:text-base">{art.title}</h3>
+                <div className="mt-2 flex flex-wrap gap-x-3 text-[10px] uppercase text-muted-foreground">
+                  {art.size && <span>{art.size}</span>}{art.price && <span>{art.price}</span>}
+                </div>
               </div>
             </button>
           ))}
         </div>
       </section>
 
-      <section id="manifiesto" className="relative border-y border-foreground bg-ink px-5 py-24 text-paper md:px-10 md:py-36">
-        <span className="absolute right-[8%] top-8 rotate-6 font-display text-8xl text-signal md:text-[12rem]">*</span>
-        <p className="mb-10 text-xs font-bold uppercase text-paper/60">Manifiesto / 001</p>
-        <p className="max-w-6xl font-display text-5xl leading-[.94] md:text-8xl lg:text-9xl">PINTO LO QUE VEO CUANDO NADIE ESTÁ MIRANDO.</p>
-        <div className="mt-16 grid gap-8 border-t border-paper/30 pt-7 text-lg md:grid-cols-3">
-          <p>La calle, el mar, los cuerpos y las palabras aparecen sin pedir permiso.</p>
-          <p>Cada obra es un registro: una escena, una sensación, un fragmento que se niega a desaparecer.</p>
-          <p className="font-display text-3xl text-signal">MAR DEL PLATA<br />↘ ARGENTINA</p>
+      <section id="manifiesto" className="border-y-4 border-foreground bg-foreground text-background">
+        <div className="mx-auto grid max-w-[1500px] md:grid-cols-[1fr_2fr]">
+          <div className="border-b-2 border-background p-5 md:border-b-0 md:border-r-2 md:p-10">
+            <p className="text-xs font-bold uppercase">Perfil / 001</p>
+          </div>
+          <div className="p-5 md:p-10">
+            <p className="max-w-4xl font-display text-4xl font-black uppercase leading-[.95] md:text-7xl">Pinto lo que veo cuando nadie está mirando.</p>
+            <div className="mt-12 grid gap-6 border-t border-background pt-6 text-sm md:grid-cols-2">
+              <p>La calle, el mar, los cuerpos y las palabras aparecen sin pedir permiso.</p>
+              <p>Cada obra es una escena, una sensación, un fragmento que se niega a desaparecer.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <footer id="contacto" className="px-5 py-20 md:px-10 md:py-28">
-        <p className="text-xs font-bold uppercase text-muted-foreground">Obras disponibles / Consultas</p>
-        <h2 className="mt-5 max-w-5xl font-display text-6xl leading-[.9] md:text-9xl">¿HABLAMOS DE ARTE?</h2>
-        <div className="mt-12 flex flex-col gap-3 sm:flex-row">
+      <footer id="contacto" className="mx-auto max-w-[1500px] px-4 py-16 md:px-10 md:py-24">
+        <p className="text-xs font-bold uppercase">Obras disponibles / Consultas</p>
+        <h2 className="mt-5 max-w-5xl font-display text-5xl font-black uppercase leading-[.9] md:text-8xl">Hablemos de arte.</h2>
+        <div className="mt-10 flex flex-col gap-2 sm:flex-row">
           <Button asChild size="lg" className="h-14 rounded-none px-7 text-base"><a href="https://wa.me/542236001188" target="_blank" rel="noreferrer"><MessageCircle /> WhatsApp</a></Button>
           <Button asChild variant="outline" size="lg" className="h-14 rounded-none border-foreground px-7 text-base"><a href="https://instagram.com/rammiro" target="_blank" rel="noreferrer"><Instagram /> @rammiro</a></Button>
         </div>
-        <div className="mt-24 flex items-end justify-between border-t border-foreground pt-5 text-xs font-bold uppercase"><span>RAMMIRO © 2026</span><span>MDP — ARG</span></div>
+        <div className="mt-20 flex items-end justify-between border-t-2 border-foreground pt-4 text-xs font-bold uppercase"><span>RAMMIRO © 2026</span><span>MDP — ARG</span></div>
       </footer>
 
       {selected !== null && artworks[selected] && <Lightbox artwork={artworks[selected]} index={selected} onClose={() => setSelected(null)} onMove={(step) => setSelected((selected + step + artworks.length) % artworks.length)} />}
@@ -159,21 +169,21 @@ function Index() {
 }
 
 function Lightbox({ artwork, index, onClose, onMove }: { artwork: Artwork; index: number; onClose: () => void; onMove: (step: number) => void }) {
-  return <div className="fixed inset-0 z-50 grid bg-ink text-paper md:grid-cols-[1fr_340px]" role="dialog" aria-modal="true" aria-label={artwork.title}>
+  return <div className="fixed inset-0 z-50 grid bg-foreground text-background md:grid-cols-[1fr_340px]" role="dialog" aria-modal="true" aria-label={artwork.title}>
     <div className="relative flex min-h-0 items-center justify-center p-5 md:p-10">
       <img src={artwork.src} alt={artwork.title} className="max-h-[72vh] max-w-full object-contain md:max-h-[90vh]" />
-      <Button variant="outline" size="icon" onClick={() => onMove(-1)} className="absolute bottom-5 left-5 rounded-full border-paper/50 bg-ink text-paper hover:bg-paper hover:text-ink md:bottom-10 md:left-10" aria-label="Obra anterior"><ArrowLeft /></Button>
-      <Button variant="outline" size="icon" onClick={() => onMove(1)} className="absolute bottom-5 left-17 rounded-full border-paper/50 bg-ink text-paper hover:bg-paper hover:text-ink md:bottom-10 md:left-22" aria-label="Obra siguiente"><ArrowRight /></Button>
+      <Button variant="outline" size="icon" onClick={() => onMove(-1)} className="absolute bottom-5 left-5 rounded-none border-background/50 bg-foreground text-background hover:bg-background hover:text-foreground md:bottom-10 md:left-10" aria-label="Obra anterior"><ArrowLeft /></Button>
+      <Button variant="outline" size="icon" onClick={() => onMove(1)} className="absolute bottom-5 left-17 rounded-none border-background/50 bg-foreground text-background hover:bg-background hover:text-foreground md:bottom-10 md:left-22" aria-label="Obra siguiente"><ArrowRight /></Button>
     </div>
     <aside className="relative border-t border-paper/20 p-6 md:border-l md:border-t-0 md:p-8">
-      <Button variant="ghost" size="icon" onClick={onClose} className="absolute right-5 top-5 text-paper hover:bg-paper hover:text-ink" aria-label="Cerrar"><X /></Button>
-      <p className="text-xs text-paper/50">{String(index + 1).padStart(2, "0")} / {artworks.length}</p>
-      <h2 className="mt-14 font-display text-5xl uppercase leading-none">{artwork.title}</h2>
-      <div className="mt-8 space-y-2 border-t border-paper/30 pt-5 text-sm">
+      <Button variant="ghost" size="icon" onClick={onClose} className="absolute right-5 top-5 rounded-none text-background hover:bg-background hover:text-foreground" aria-label="Cerrar"><X /></Button>
+      <p className="text-xs text-background/50">{String(index + 1).padStart(2, "0")} / {artworks.length}</p>
+      <h2 className="mt-14 font-display text-5xl font-black uppercase leading-none">{artwork.title}</h2>
+      <div className="mt-8 space-y-2 border-t border-background/30 pt-5 text-sm">
         {artwork.size && <p>{artwork.size}</p>}
-        {artwork.price && <p className="text-signal">{artwork.price}</p>}
+        {artwork.price && <p>{artwork.price}</p>}
       </div>
-      <Button asChild className="mt-8 w-full rounded-none bg-signal text-signal-foreground hover:bg-signal/85"><a href={`https://wa.me/542236001188?text=${encodeURIComponent(`Hola, consulto por la obra “${artwork.title}”`)}`} target="_blank" rel="noreferrer">Consultar obra</a></Button>
+      <Button asChild className="mt-8 w-full rounded-none bg-background text-foreground hover:bg-background/85"><a href={`https://wa.me/542236001188?text=${encodeURIComponent(`Hola, consulto por la obra “${artwork.title}”`)}`} target="_blank" rel="noreferrer">Consultar obra</a></Button>
     </aside>
   </div>;
 }
