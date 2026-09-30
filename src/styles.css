@@ -19,8 +19,8 @@
  */
 
 @theme inline {
-  --font-display: "Anton", sans-serif;
-  --font-sans: "Space Grotesk", sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-sans: "Figtree", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -69,12 +69,12 @@
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.965 0.013 91);
-  --foreground: oklch(0.145 0.012 65);
-  --paper: oklch(0.965 0.013 91);
-  --ink: oklch(0.145 0.012 65);
-  --signal: oklch(0.647 0.225 29);
-  --signal-foreground: oklch(0.98 0.01 90);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0 0 0);
+  --paper: oklch(1 0 0);
+  --ink: oklch(0 0 0);
+  --signal: oklch(0 0 0);
+  --signal-foreground: oklch(1 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
@@ -160,51 +160,12 @@
 
 @utility nav-link {
   position: relative;
-  &::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -6px; height: 2px; background: var(--signal); transition: right .25s ease; }
+  &::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -6px; height: 2px; background: var(--foreground); transition: right .25s ease; }
   &:hover::after { right: 0; }
 }
 
-@utility art-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 4rem 1rem;
-  @media (min-width: 768px) { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8rem 2rem; }
-}
-
-@utility artwork {
-  grid-column: span 1;
-  @media (min-width: 768px) {
-    grid-column: span 4;
-    &:nth-child(5n + 1) { grid-column: span 5; }
-    &:nth-child(5n + 2) { grid-column: 7 / span 5; margin-top: 7rem; }
-    &:nth-child(5n + 3) { grid-column: 2 / span 4; }
-    &:nth-child(5n + 4) { grid-column: 7 / span 6; }
-    &:nth-child(5n) { grid-column: 4 / span 6; }
-  }
-}
-
-@utility artwork-wide {
-  grid-column: span 2;
-  @media (min-width: 768px) { grid-column: span 6; }
-}
-
-@utility scribble {
-  position: absolute;
-  z-index: 0;
-  user-select: none;
-  font-family: var(--font-display);
-  color: var(--signal);
-  opacity: .95;
-  pointer-events: none;
-}
-
-@utility scribble-one { top: 12%; right: 5%; font-size: min(30vw, 27rem); transform: rotate(13deg); }
-@utility scribble-two { top: 20%; left: 4%; font-size: min(14vw, 12rem); transform: rotate(-12deg); color: var(--foreground); opacity: .1; }
-
 @media (prefers-reduced-motion: no-preference) {
-  .scribble-one { animation: drift 7s ease-in-out infinite alternate; }
-  .artwork { animation: reveal linear both; animation-timeline: view(); animation-range: entry 5% cover 28%; }
+  #obras button { animation: reveal linear both; animation-timeline: view(); animation-range: entry 5% cover 18%; }
 }
 
-@keyframes drift { to { transform: translateY(22px) rotate(8deg); } }
 @keyframes reveal { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
