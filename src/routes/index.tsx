@@ -108,10 +108,9 @@ function Index() {
           </div>
           <div className="hidden h-28 w-28 shrink-0 bg-foreground md:block" aria-hidden="true" />
         </div>
-        <div className="grid grid-cols-2 border-x-4 border-b-4 border-foreground md:grid-cols-4">
+        <div className="grid grid-cols-2 border-x-4 border-b-4 border-foreground">
           <p className="border-r-2 border-foreground p-4 text-xs font-bold uppercase md:p-5">Pintura contemporánea</p>
-          <p className="border-r-0 border-foreground p-4 text-xs font-bold uppercase md:border-r-2 md:p-5">Mar del Plata / ARG</p>
-          <p className="col-span-2 border-t-2 border-foreground p-4 text-xs uppercase md:border-t-0 md:p-5">Crónicas visuales del mar, la noche y todo lo que sucede en el medio.</p>
+          <p className="p-4 text-xs font-bold uppercase md:p-5">Mar del Plata / ARG</p>
         </div>
       </section>
 
