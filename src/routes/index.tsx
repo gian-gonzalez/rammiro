@@ -153,13 +153,12 @@ function Index() {
         <div className="mt-24 flex items-end justify-between border-t border-foreground pt-5 text-xs font-bold uppercase"><span>RAMMIRO © 2026</span><span>MDP — ARG</span></div>
       </footer>
 
-      {selected !== null && <Lightbox artwork={artworks[selected]} index={selected} onClose={() => setSelected(null)} onMove={(step) => setSelected((selected + step + artworks.length) % artworks.length)} />}
+      {selected !== null && artworks[selected] && <Lightbox artwork={artworks[selected]} index={selected} onClose={() => setSelected(null)} onMove={(step) => setSelected((selected + step + artworks.length) % artworks.length)} />}
     </main>
   );
 }
 
-function Lightbox({ artwork, index, onClose, onMove }: { artwork?: Artwork; index: number; onClose: () => void; onMove: (step: number) => void }) {
-  if (!artwork) return null;
+function Lightbox({ artwork, index, onClose, onMove }: { artwork: Artwork; index: number; onClose: () => void; onMove: (step: number) => void }) {
   return <div className="fixed inset-0 z-50 grid bg-ink text-paper md:grid-cols-[1fr_340px]" role="dialog" aria-modal="true" aria-label={artwork.title}>
     <div className="relative flex min-h-0 items-center justify-center p-5 md:p-10">
       <img src={artwork.src} alt={artwork.title} className="max-h-[72vh] max-w-full object-contain md:max-h-[90vh]" />
