@@ -168,21 +168,36 @@ function Index() {
 }
 
 function Lightbox({ artwork, index, onClose, onMove }: { artwork: Artwork; index: number; onClose: () => void; onMove: (step: number) => void }) {
-  return <div className="fixed inset-0 z-50 grid bg-foreground text-background md:grid-cols-[1fr_340px]" role="dialog" aria-modal="true" aria-label={artwork.title}>
-    <div className="relative flex min-h-0 items-center justify-center p-5 md:p-10">
-      <img src={artwork.src} alt={artwork.title} className="max-h-[72vh] max-w-full object-contain md:max-h-[90vh]" />
-      <Button variant="outline" size="icon" onClick={() => onMove(-1)} className="absolute bottom-5 left-5 rounded-none border-background/50 bg-foreground text-background hover:bg-background hover:text-foreground md:bottom-10 md:left-10" aria-label="Obra anterior"><ArrowLeft /></Button>
-      <Button variant="outline" size="icon" onClick={() => onMove(1)} className="absolute bottom-5 left-17 rounded-none border-background/50 bg-foreground text-background hover:bg-background hover:text-foreground md:bottom-10 md:left-22" aria-label="Obra siguiente"><ArrowRight /></Button>
-    </div>
-    <aside className="relative border-t border-paper/20 p-6 md:border-l md:border-t-0 md:p-8">
-      <Button variant="ghost" size="icon" onClick={onClose} className="absolute right-5 top-5 rounded-none text-background hover:bg-background hover:text-foreground" aria-label="Cerrar"><X /></Button>
+  const navButton = "h-12 w-12 rounded-none border-background/50 bg-foreground text-background hover:bg-background hover:text-foreground md:h-10 md:w-10";
+  return <div className="fixed inset-0 z-50 flex h-[100dvh] flex-col bg-foreground text-background md:grid md:grid-cols-[1fr_340px]" role="dialog" aria-modal="true" aria-label={artwork.title}>
+    <div className="flex shrink-0 items-center justify-between border-b border-background/20 px-4 py-2 md:hidden">
       <p className="text-xs text-background/50">{String(index + 1).padStart(2, "0")} / {artworks.length}</p>
-      <h2 className="mt-14 font-display text-5xl font-black uppercase leading-none">{artwork.title}</h2>
-      <div className="mt-8 space-y-2 border-t border-background/30 pt-5 text-sm">
-        {artwork.size && <p>{artwork.size}</p>}
-        {artwork.price && <p>{artwork.price}</p>}
+      <Button variant="ghost" size="icon" onClick={onClose} className="h-12 w-12 rounded-none text-background hover:bg-background hover:text-foreground" aria-label="Cerrar"><X className="size-6" /></Button>
+    </div>
+    <div className="relative flex min-h-0 flex-1 items-center justify-center p-4 md:p-10">
+      <img src={artwork.src} alt={artwork.title} className="max-h-full max-w-full object-contain md:max-h-[90vh]" />
+      <div className="absolute bottom-10 left-10 hidden gap-2 md:flex">
+        <Button variant="outline" size="icon" onClick={() => onMove(-1)} className={navButton} aria-label="Obra anterior"><ArrowLeft /></Button>
+        <Button variant="outline" size="icon" onClick={() => onMove(1)} className={navButton} aria-label="Obra siguiente"><ArrowRight /></Button>
       </div>
-      <Button asChild className="mt-8 w-full rounded-none bg-background text-foreground hover:bg-background/85"><a href={`https://wa.me/542236001188?text=${encodeURIComponent(`Hola, consulto por la obra “${artwork.title}”`)}`} target="_blank" rel="noreferrer">Consultar obra</a></Button>
+    </div>
+    <aside className="relative max-h-[45dvh] shrink-0 overflow-y-auto border-t border-paper/20 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] md:max-h-none md:border-l md:border-t-0 md:p-8">
+      <Button variant="ghost" size="icon" onClick={onClose} className="absolute right-5 top-5 hidden rounded-none text-background hover:bg-background hover:text-foreground md:inline-flex" aria-label="Cerrar"><X /></Button>
+      <p className="hidden text-xs text-background/50 md:block">{String(index + 1).padStart(2, "0")} / {artworks.length}</p>
+      <div className="flex items-start justify-between gap-4 md:block">
+        <div className="min-w-0">
+          <h2 className="break-words font-display text-2xl font-black uppercase leading-none md:mt-14 md:text-5xl">{artwork.title}</h2>
+          {(artwork.size || artwork.price) && <div className="mt-2 flex flex-wrap gap-x-3 text-xs md:mt-8 md:block md:space-y-2 md:border-t md:border-background/30 md:pt-5 md:text-sm">
+            {artwork.size && <p>{artwork.size}</p>}
+            {artwork.price && <p>{artwork.price}</p>}
+          </div>}
+        </div>
+        <div className="flex shrink-0 gap-2 md:hidden">
+          <Button variant="outline" size="icon" onClick={() => onMove(-1)} className={navButton} aria-label="Obra anterior"><ArrowLeft /></Button>
+          <Button variant="outline" size="icon" onClick={() => onMove(1)} className={navButton} aria-label="Obra siguiente"><ArrowRight /></Button>
+        </div>
+      </div>
+      <Button asChild className="mt-4 h-12 w-full rounded-none bg-background text-foreground hover:bg-background/85 md:mt-8 md:h-9"><a href={`https://wa.me/542236001188?text=${encodeURIComponent(`Hola, consulto por la obra “${artwork.title}”`)}`} target="_blank" rel="noreferrer">Consultar obra</a></Button>
     </aside>
   </div>;
 }
